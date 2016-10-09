@@ -68,7 +68,7 @@
 	// BST traversal using inorder traversal. Accepts a call back function
 	BinarySearchTree.prototype.traverse = function(cb) {
 		var crawl = this.root;
-		return crawl ? this.inorderTraversal(crawl, cb) : null;
+		return crawl && typeof cb === 'function' ? this.inorderTraversal(crawl, cb) : null;
 	}
 	// BST Traversal Utility
 	BinarySearchTree.prototype.inorderTraversal = function(root, cb){
