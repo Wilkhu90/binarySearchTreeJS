@@ -1,0 +1,11 @@
+{
+  "name": "bst",
+  "version": "1.0.0",
+  "description": "Creates Binary search tree and helps manipulate items in tree",
+  "main": "BST.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sumeet Wilkhu",
+  "license": "ISC"
+}
