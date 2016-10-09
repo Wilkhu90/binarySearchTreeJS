@@ -9,9 +9,6 @@ bTree.insert(1);
 bTree.insert(5);
 bTree.insert(6);
 
-console.log(bTree.root.data); // 4
-console.log(bTree.root.right.data); // 5
-
 console.log(bTree.search(1)); // true
 console.log(bTree.search(8)); // false
 //Traverse Tree inorder

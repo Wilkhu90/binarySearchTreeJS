@@ -11,14 +11,14 @@
 	}
 	// BST constructor
 	function BinarySearchTree(){
-		this.root = null;
+		this._root = null;
 		this._size = 0;
 	}
 	// BST insertion of numbers. TODO make it generic with Comparator
 	BinarySearchTree.prototype.insert = function (num) {
-		var crawl = this.root, previous, isLeft;
+		var crawl = this._root, previous, isLeft;
 		if(crawl == null) {
-			this.root = new Node(num);
+			this._root = new Node(num);
 			this._size++;
 			return true;
 		}
@@ -47,7 +47,7 @@
 	}
 	//BST search key in tree.
 	BinarySearchTree.prototype.search = function(data) {
-		var crawl = this.root;
+		var crawl = this._root;
 		return this.searchUtil(crawl, data);
 	}
 	// BST search Utility.
@@ -67,7 +67,7 @@
 	}
 	// BST traversal using inorder traversal. Accepts a call back function
 	BinarySearchTree.prototype.traverse = function(cb) {
-		var crawl = this.root;
+		var crawl = this._root;
 		return crawl && typeof cb === 'function' ? this.inorderTraversal(crawl, cb) : null;
 	}
 	// BST Traversal Utility
