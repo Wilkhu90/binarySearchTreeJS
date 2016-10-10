@@ -84,6 +84,86 @@
 	BinarySearchTree.prototype.size = function() {
 		return this._size;
 	}
+	// BST Delete number from tree
+	BinarySearchTree.prototype.delete = function(num) {
+		var crawl = this._root, previous, isLeft, found = false;
+		previous = crawl;
+		while(crawl != null) {
+			if(num == crawl.data){
+				found = true;
+				break;
+			}
+			previous = crawl;
+			if(num > crawl.data){
+				crawl = crawl.right;
+				isLeft = false;
+			}
+			else if(num < crawl.data){
+				crawl = crawl.left;
+				isLeft = true;
+			}
+		}
+		if(found){
+			//If no children for node to be deleted.
+			if(crawl.left == null && crawl.right == null) {
+				if(isLeft)
+					previous.left = null;
+				else
+					previous.right = null;
+			}
+			else if(crawl.left == null) {
+				if(isLeft) {
+					previous.left = crawl.right;
+				}
+				else {
+					previous.right = crawl.right;
+				}
+			}
+			else if(crawl.right == null) {
+				if(isLeft) {
+					previous.left = crawl.left;
+				}
+				else {
+					previous.right = crawl.left;
+				}
+			}
+			else {
+				var successor = this.getSuccessor(crawl);
+				if(crawl==this._root){
+					this._root = successor;
+				}
+				else if(isLeft){
+					previous.left = successor;
+				}
+				else{
+					previous.right = successor;
+				}			
+				successor.left = crawl.left;
+				}
+			this._size--;
+			return true;
+		}
+		return false;
+	}
+
+	//BST find successor
+	BinarySearchTree.prototype.getSuccessor = function(node) {
+		var successsor =null;
+		var successsorParent =null;
+		var current = node.right;
+		while(current!=null){
+			successsorParent = successsor;
+			successsor = current;
+			current = current.left;
+		}
+
+		if(successsor!=node.right){
+			successsorParent.left = successsor.right;
+			successsor.right = node.right;
+		}
+		return successsor;
+	}
+
 	// Append the BST to global execution context.
 	global.createBST = BST;
 
